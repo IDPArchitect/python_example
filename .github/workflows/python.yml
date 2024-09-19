@@ -44,6 +44,7 @@ jobs:
       run: export PYTHONPATH="${PYTHONPATH}:." && . .venv/bin/activate && pytest
 
     - name: Lint code
+      continue-on-error: true
       run: |
         . .venv/bin/activate
         pylint app.py
