@@ -41,7 +41,10 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run tests
-      run: export PYTHONPATH="${PYTHONPATH}:." && . .venv/bin/activate && pytest
+      run: |
+        . .venv/bin/activate
+        export PYTHONPATH="${PYTHONPATH}:."
+        pytest
 
     - name: Lint code
       continue-on-error: true
@@ -52,7 +55,7 @@ jobs:
     - name: Security analysis with Bandit
       run: |
         . .venv/bin/activate
-        bandit -r app.py
+        bandit -r .
 
     - name: Code coverage report
       run: |
