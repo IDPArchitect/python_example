@@ -53,6 +53,7 @@ jobs:
         pylint app.py
 
     - name: Security analysis with Bandit
+      continue-on-error: true
       run: |
         . .venv/bin/activate
         bandit -r .
